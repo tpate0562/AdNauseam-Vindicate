@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+    background-image: linear-gradient(180deg, #4949c2, #6f6fe4, #ffb444);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    /* background-image: radial-gradient(rgb(4, 45, 157), rgb(64, 116, 237)); */
+}
+
+.header {
+    overflow: hidden;
+    position: fixed;
+    background-color: #1c00bc; /* Not the biggest fan of this color, we could change (or even get rid of) */
+    padding: 20px 10px;
+    width: 100%;
+}
+
+.header a {
+    display: block;
+    float: right;
+    padding: 12px;
+    line-height: 22px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Roboto Condensed";
+    font-size: 22px;
+    color: #ffffff;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.header label {
+    cursor: pointer;
+}
+
+.header input {
+    display: none;
+}
+
+.header a:hover {
+    background: linear-gradient(90deg, #ffb444, #ffffff); /* might just change to standard button hover look y'know */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color: transparent;
+    transition: 0.5s;
+}
+
+.content {
+    padding-top: 100px;
+}
+
+#logo {
+    float: left;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    background: linear-gradient(90deg, #ffb444, #ffffff, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: #00000000;
+}
+
+/* This can be deleted if we change how the grid works */
+.btn1 { grid-area: button1; }
+.btn2 { grid-area: button2; }
+.btn3 { grid-area: button3; }
+.btn4 { grid-area: button4; }
+
+/* TODO: resize text based on button size */
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    background-color: #1c00bc;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    padding: 20px 150px;
+    margin: 10px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* I want to vertically center this later. Also I want to have an arrow pointing towards the load deck button */
+#startprompt {
+    display: flex;
+    justify-content: center;
+    font-family: "Inter";
+    font-size: 30px;
+    font-style: italic;
+    color: #ffffff;
+}
+
+#startbutton {
+    display: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #1c00bc;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    padding: 10px 100px;
+    margin: 10px 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+button:hover {
+    background-color: #2300e6;
+    transition: 0.2s;
+}
+
+/* THIS GRID ISN'T RIGHT. Needs to have button sizes not based on other text (and still needs vertical centering) */
+.center {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    grid-template-areas: 
+    'button1 button2'
+    'button3 button4';
+    padding: 10px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter";
+    font-size: 36px;
+    color: #ffffff;
+}
+
+#rsp-correct, #rsp-incorrect {
+    margin: 20px;
+}
+.ttf {
+    display: flex;
+    justify-content: center;
+    font-family: "Inter";
+    color: #ffffff;
+    font-size: 40px;
+}
+.counter-anim {
+    animation: scorescale 0.2s 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes scorescale {
+    0% {transform: scale(1.2)}
+    100% {transofrm: scale(1.0)}
+}
+
+#question, #rsp {
+    /*display: flex;*/
+    display: none;
+    justify-content: center;
+    font-family: "Inter";
+    color: #ffffff;
+}
+
+.rsp-correct-anim {
+    animation: correctflash 0.3s 1;
+    animation-timing-function: ease-out;
+}
+ 
+@keyframes correctflash {
+    0% {color: #00ff62}
+    100% {color: #ffffff}
+}
+
+.rsp-incorrect-anim {
+    animation: incorrectflash 0.3s 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes incorrectflash {
+    0% {color: #ff0000}
+    100% {color: #ffffff}
+}
+
+
+
+
+
+/**************************************************************************************************************************************
+createdeck.html-SPECIFIC STYLES GO DOWN HERE. I know it's probably a bad idea to put it all on one stylesheet but we can fix that later.
+***************************************************************************************************************************************/
+
+
+#deck-input {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    color: #ffffff;
+}
+
+input[type=text] {
+    width: 40%;
+    padding: 10px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 3px solid #000000;
+    border-radius: 4px;
+    border: 3px solid;
+    outline: none;
+}
+
+#button-controls {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+::placeholder {
+    font-family: "Roboto Condensed";
+}
